@@ -15,15 +15,15 @@ class CategoryScreen extends StatelessWidget {
       ),
       body: GridView(
         padding: const EdgeInsets.all(20),
-         children: DUMMY_CATEGORIES
-            .map((e) => CategoryItem(id: e.id, title: e.title, color: e.color))
-            .toList(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 3 / 2,
             crossAxisCount: isPortrait ? 2 : 5,
             crossAxisSpacing: isPortrait ? 20 : 30,
             mainAxisSpacing: isPortrait ? 20 : 30,
             mainAxisExtent: isPortrait ? 150 : 200),
+         children: DUMMY_CATEGORIES
+            .map((e) => CategoryItem(id: e.id, title: e.title, color: e.color))
+            .toList(),
            
       ),
     );
