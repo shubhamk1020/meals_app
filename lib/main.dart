@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './Screen/tab_screen.dart';
 import './Screen/meal_detail_screen.dart';
 import './Screen/Category_Screen.dart';
 import './Screen/categoriesMealsScreen.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'MealsApp',
       theme: ThemeData(
-           canvasColor: const Color.fromRGBO(255, 254, 229, 1),
+           canvasColor: Color.fromARGB(251, 251, 222, 219),
           fontFamily: 'Raleway',
           textTheme: ThemeData.light().textTheme.copyWith(
               bodyText1: const TextStyle(
@@ -27,15 +28,17 @@ class MyApp extends StatelessWidget {
               headline6: const TextStyle(
                 fontSize: 22,
                 fontFamily: 'RobotoCondensed',
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
+                
               )),
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
-              .copyWith(secondary: Colors.amber)),
+              .copyWith(secondary: Colors.amber),
+              ),
       initialRoute: '/',
       //  home:  CategoryScreen(),
 
       routes: {
-        '/': (ctx) => CategoryScreen(),
+        '/': (ctx) => TabScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
       },

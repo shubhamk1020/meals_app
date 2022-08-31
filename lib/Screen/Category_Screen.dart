@@ -9,11 +9,7 @@ class CategoryScreen extends StatelessWidget {
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
 
-    return Scaffold(
-      
-      appBar: AppBar(title: Text('DeliMeals'),
-      ),
-      body: GridView(
+    return  GridView(
         padding: const EdgeInsets.all(20),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 3 / 2,
@@ -24,8 +20,6 @@ class CategoryScreen extends StatelessWidget {
          children: DUMMY_CATEGORIES
             .map((e) => CategoryItem(id: e.id, title: e.title, color: e.color))
             .toList(),
-           
-      ),
     );
   }
 }

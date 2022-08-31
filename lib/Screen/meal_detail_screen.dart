@@ -45,21 +45,25 @@ class MealDetailScreen extends StatelessWidget {
         child: Column(
           children: [
             Center(
-              child: Container(
-                margin: EdgeInsets.only(top: 10),
-                width: isPortrait ? double.infinity : 600,
-                height: isPortrait ? 250:300,
-                child: Image.network(
-                  selectMeal.imageUrl,
-                  fit: BoxFit.cover
-                  ,
+              child: ClipRect(
+                
+                child: Container(
+                  margin: EdgeInsets.only(top: 10),
+                  width: isPortrait ? double.infinity : 600,
+                  height: isPortrait ? 250:300,
+                  child: Image.network(
+                    selectMeal.imageUrl,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
             buildSectionTitle(context,'Ingredient'),
             buildContainer(ListView.builder(
                 itemBuilder: (ctx, index) => Card(
-                  color: Theme.of(context).primaryColor,
+                  elevation:3,
+                 // surfaceTintColor: Colors.amber,
+                  color:Theme.of(context).primaryColor,
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
