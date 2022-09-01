@@ -9,6 +9,7 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+ 
 
   const MealItem(
       {Key key,
@@ -17,7 +18,8 @@ class MealItem extends StatelessWidget {
       @required this.imageUrl,
       @required this.duration,
       @required this.complexity,
-      @required this.affordability})
+      @required this.affordability,
+   })
       : super(key: key);
 
   String get complexityText {
@@ -41,11 +43,9 @@ class MealItem extends StatelessWidget {
       case Affordability.Pricey:
         return 'Pricey';
         break;
-
       case Affordability.Affordable:
         return 'Affordable';
         break;
-
       case Affordability.Luxurious:
         return 'Luxurious';
         break;
@@ -55,15 +55,25 @@ class MealItem extends StatelessWidget {
   }
 
   void selectMealItem(BuildContext context) {
-    Navigator.of(context).pushNamed(MealDetailScreen.routeName, arguments: id);
+    Navigator.of(context)
+        .pushNamed(MealDetailScreen.routeName, arguments: id)
+        .then(
+      (result) {
+        if (result != null) {
+          // removeItem(result);
+        }
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
     return InkWell(
       onTap: () => selectMealItem(context),
       child: Card(
-        elevation: 4,
+        elevation: 14,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -79,7 +89,7 @@ class MealItem extends StatelessWidget {
                   ),
                   child: Image.network(
                     imageUrl,
-                    height: 250,
+                    height: isPortrait ? 250 : 600,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
@@ -88,13 +98,13 @@ class MealItem extends StatelessWidget {
                   bottom: 20,
                   right: 10,
                   child: Container(
-                    width: 300,
+                    width: 250,
                     color: Colors.black54,
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                     alignment: Alignment.centerRight,
                     child: Text(
                       title,
-                      style: TextStyle(color: Colors.white, fontSize: 26),
+                      style: TextStyle(color: Colors.white, fontSize: 22),
                       softWrap: true,
                       overflow: TextOverflow.fade,
                     ),
@@ -114,7 +124,7 @@ class MealItem extends StatelessWidget {
                         width: 6,
                       ),
                       Text(
-                        '$duration min', //style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        '$duration min',
                       ),
                     ],
                   ),
